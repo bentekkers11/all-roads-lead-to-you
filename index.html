@@ -61,42 +61,36 @@
       }
     }
 
-    /* Road-like lines */
+    /* Road-like lines from all directions with perspective */
     .road {
       position: absolute;
       width: 6px;
       height: 200vh;
-      background: linear-gradient(to bottom, transparent 0%, #ccc 20%, #ccc 80%, transparent 100%);
+      background: repeating-linear-gradient(to bottom, #555 0px 20px, #fff 20px 40px);
       top: 50%;
       left: 50%;
       transform-origin: center;
-      animation: flow 4s linear infinite;
       border-radius: 2px;
     }
 
-    /* Multiple directions */
-    .road:nth-child(1) { --angle: 0deg; animation-delay: 0s; }
-    .road:nth-child(2) { --angle: 45deg; animation-delay: -0.5s; }
-    .road:nth-child(3) { --angle: 90deg; animation-delay: -1s; }
-    .road:nth-child(4) { --angle: 135deg; animation-delay: -1.5s; }
-    .road:nth-child(5) { --angle: 180deg; animation-delay: -2s; }
-    .road:nth-child(6) { --angle: 225deg; animation-delay: -2.5s; }
-    .road:nth-child(7) { --angle: 270deg; animation-delay: -3s; }
-    .road:nth-child(8) { --angle: 315deg; animation-delay: -3.5s; }
+    /* Animate roads along radial directions */
+    @keyframes flow1 { 0% {transform: translate(-50%, -100vh) rotate(0deg);} 100% {transform: translate(-50%, 0) rotate(0deg);} }
+    @keyframes flow2 { 0% {transform: translate(-100vw, -50%) rotate(90deg);} 100% {transform: translate(0, -50%) rotate(90deg);} }
+    @keyframes flow3 { 0% {transform: translate(-50%, 100vh) rotate(180deg);} 100% {transform: translate(-50%, 0) rotate(180deg);} }
+    @keyframes flow4 { 0% {transform: translate(100vw, -50%) rotate(270deg);} 100% {transform: translate(0, -50%) rotate(270deg);} }
+    @keyframes flow5 { 0% {transform: translate(-100vw, -100vh) rotate(45deg);} 100% {transform: translate(0,0) rotate(45deg);} }
+    @keyframes flow6 { 0% {transform: translate(100vw, -100vh) rotate(135deg);} 100% {transform: translate(0,0) rotate(135deg);} }
+    @keyframes flow7 { 0% {transform: translate(100vw, 100vh) rotate(225deg);} 100% {transform: translate(0,0) rotate(225deg);} }
+    @keyframes flow8 { 0% {transform: translate(-100vw, 100vh) rotate(315deg);} 100% {transform: translate(0,0) rotate(315deg);} }
 
-    @keyframes flow {
-      0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(60vh) rotate(var(--angle)) scale(0.8);
-      }
-      20% { opacity: 1; transform: translateX(-50%) translateY(40vh) rotate(var(--angle)) scale(0.9); }
-      50% { transform: translateX(-50%) translateY(0) rotate(var(--angle)) scale(1); }
-      80% { opacity: 1; transform: translateX(-50%) translateY(-40vh) rotate(var(--angle)) scale(0.9); }
-      100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-60vh) rotate(var(--angle)) scale(0.8);
-      }
-    }
+    .road:nth-child(1) { animation: flow1 4s linear infinite; }
+    .road:nth-child(2) { animation: flow2 4s linear infinite; }
+    .road:nth-child(3) { animation: flow3 4s linear infinite; }
+    .road:nth-child(4) { animation: flow4 4s linear infinite; }
+    .road:nth-child(5) { animation: flow5 4s linear infinite; }
+    .road:nth-child(6) { animation: flow6 4s linear infinite; }
+    .road:nth-child(7) { animation: flow7 4s linear infinite; }
+    .road:nth-child(8) { animation: flow8 4s linear infinite; }
 
     /* Vignette */
     .vignette {
@@ -119,7 +113,7 @@
     <div class="road"></div>
 
     <div class="center">
-      <img src="her-photo.jpg" alt="You" />
+      <img src="/mnt/data/A_digital_photograph_in_the_center_of_the_web_page.png" alt="You" />
       <div class="caption">All roads lead to you</div>
     </div>
 

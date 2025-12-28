@@ -50,6 +50,10 @@
       letter-spacing: 0.04em;
     }
 
+    .caption::after {
+      content: ' ❤️';
+    }
+
     @keyframes reveal {
       to {
         opacity: 1;
@@ -57,26 +61,28 @@
       }
     }
 
-    /* Moving, curved roads */
+    /* Road-like lines */
     .road {
       position: absolute;
-      width: 3px;
-      height: 160vh;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.95), transparent);
+      width: 6px;
+      height: 200vh;
+      background: linear-gradient(to bottom, transparent 0%, #ccc 20%, #ccc 80%, transparent 100%);
       top: 50%;
       left: 50%;
       transform-origin: center;
-      animation: flow 3s linear infinite;
-      border-radius: 50%;
+      animation: flow 4s linear infinite;
+      border-radius: 2px;
     }
 
+    /* Multiple directions */
     .road:nth-child(1) { --angle: 0deg; animation-delay: 0s; }
-    .road:nth-child(2) { --angle: 15deg; animation-delay: -0.5s; }
-    .road:nth-child(3) { --angle: -15deg; animation-delay: -1s; }
-    .road:nth-child(4) { --angle: 35deg; animation-delay: -1.5s; }
-    .road:nth-child(5) { --angle: -35deg; animation-delay: -2s; }
-    .road:nth-child(6) { --angle: 60deg; animation-delay: -2.5s; }
-    .road:nth-child(7) { --angle: -60deg; animation-delay: -3s; }
+    .road:nth-child(2) { --angle: 45deg; animation-delay: -0.5s; }
+    .road:nth-child(3) { --angle: 90deg; animation-delay: -1s; }
+    .road:nth-child(4) { --angle: 135deg; animation-delay: -1.5s; }
+    .road:nth-child(5) { --angle: 180deg; animation-delay: -2s; }
+    .road:nth-child(6) { --angle: 225deg; animation-delay: -2.5s; }
+    .road:nth-child(7) { --angle: 270deg; animation-delay: -3s; }
+    .road:nth-child(8) { --angle: 315deg; animation-delay: -3.5s; }
 
     @keyframes flow {
       0% {
@@ -110,9 +116,10 @@
     <div class="road"></div>
     <div class="road"></div>
     <div class="road"></div>
+    <div class="road"></div>
 
     <div class="center">
-      <img src="ishiniroad.jpg" alt="You" />
+      <img src="her-photo.jpg" alt="You" />
       <div class="caption">All roads lead to you</div>
     </div>
 

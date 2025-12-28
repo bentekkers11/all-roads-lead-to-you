@@ -51,24 +51,34 @@
     /* Roads */
     .road {
       position: absolute;
-      width: 2px;
+      width: 3px;
       height: 160vh;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
-      top: -30vh;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9), transparent);
+      top: 50%;
       left: 50%;
-      transform-origin: center bottom;
-      animation: flow 6s linear infinite;
+      transform-origin: center;
+      animation: flow 3s linear infinite;
     }
 
-    .road:nth-child(2) { transform: rotate(15deg); animation-delay: -1s; }
-    .road:nth-child(3) { transform: rotate(-15deg); animation-delay: -2s; }
-    .road:nth-child(4) { transform: rotate(35deg); animation-delay: -3s; }
-    .road:nth-child(5) { transform: rotate(-35deg); animation-delay: -4s; }
-    .road:nth-child(6) { transform: rotate(60deg); animation-delay: -5s; }
-    .road:nth-child(7) { transform: rotate(-60deg); animation-delay: -6s; }
+    .road:nth-child(2) { --angle: 15deg; animation-delay: -0.5s; }
+    .road:nth-child(3) { --angle: -15deg; animation-delay: -1s; }
+    .road:nth-child(4) { --angle: 35deg; animation-delay: -1.5s; }
+    .road:nth-child(5) { --angle: -35deg; animation-delay: -2s; }
+    .road:nth-child(6) { --angle: 60deg; animation-delay: -2.5s; }
+    .road:nth-child(7) { --angle: -60deg; animation-delay: -3s; }
 
     @keyframes flow {
-      0% { opacity: 0; }
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(60vh) rotate(var(--angle));
+      }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-60vh) rotate(var(--angle));
+      }
+    }
       20% { opacity: 1; }
       80% { opacity: 1; }
       100% { opacity: 0; }

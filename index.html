@@ -61,27 +61,41 @@
       }
     }
 
-    /* Road-like lines with perspective */
+    /* Road-like elements with lane markings and perspective */
     .road {
       position: absolute;
-      width: 6px;
+      width: 12px; /* wider for road look */
       height: 200vh;
-      background: repeating-linear-gradient(to bottom, #555 0px 20px, #fff 20px 40px);
+      background: linear-gradient(to bottom, #444, #333); /* dark road center */
+      border-left: 2px solid #555; /* road edge */
+      border-right: 2px solid #555;
       top: 50%;
       left: 50%;
       transform-origin: center;
-      border-radius: 2px;
+      border-radius: 4px;
     }
 
-    /* Animate roads along radial directions */
-    @keyframes flow1 { 0% {transform: translate(-50%, -100vh) rotate(0deg);} 100% {transform: translate(-50%, 0) rotate(0deg);} }
-    @keyframes flow2 { 0% {transform: translate(-100vw, -50%) rotate(90deg);} 100% {transform: translate(0, -50%) rotate(90deg);} }
-    @keyframes flow3 { 0% {transform: translate(-50%, 100vh) rotate(180deg);} 100% {transform: translate(-50%, 0) rotate(180deg);} }
-    @keyframes flow4 { 0% {transform: translate(100vw, -50%) rotate(270deg);} 100% {transform: translate(0, -50%) rotate(270deg);} }
-    @keyframes flow5 { 0% {transform: translate(-100vw, -100vh) rotate(45deg);} 100% {transform: translate(0,0) rotate(45deg);} }
-    @keyframes flow6 { 0% {transform: translate(100vw, -100vh) rotate(135deg);} 100% {transform: translate(0,0) rotate(135deg);} }
-    @keyframes flow7 { 0% {transform: translate(100vw, 100vh) rotate(225deg);} 100% {transform: translate(0,0) rotate(225deg);} }
-    @keyframes flow8 { 0% {transform: translate(-100vw, 100vh) rotate(315deg);} 100% {transform: translate(0,0) rotate(315deg);} }
+    /* Lane markings */
+    .road::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: repeating-linear-gradient(to bottom, #fff 0 20px, transparent 20px 40px);
+    }
+
+    /* Animate roads from all directions */
+    @keyframes flow1 { 0% {transform: translate(-50%, -100vh) rotate(0deg) scaleX(0.5);} 100% {transform: translate(-50%, 0) rotate(0deg) scaleX(1);} }
+    @keyframes flow2 { 0% {transform: translate(-100vw, -50%) rotate(90deg) scaleX(0.5);} 100% {transform: translate(0, -50%) rotate(90deg) scaleX(1);} }
+    @keyframes flow3 { 0% {transform: translate(-50%, 100vh) rotate(180deg) scaleX(0.5);} 100% {transform: translate(-50%, 0) rotate(180deg) scaleX(1);} }
+    @keyframes flow4 { 0% {transform: translate(100vw, -50%) rotate(270deg) scaleX(0.5);} 100% {transform: translate(0, -50%) rotate(270deg) scaleX(1);} }
+    @keyframes flow5 { 0% {transform: translate(-100vw, -100vh) rotate(45deg) scaleX(0.5);} 100% {transform: translate(0,0) rotate(45deg) scaleX(1);} }
+    @keyframes flow6 { 0% {transform: translate(100vw, -100vh) rotate(135deg) scaleX(0.5);} 100% {transform: translate(0,0) rotate(135deg) scaleX(1);} }
+    @keyframes flow7 { 0% {transform: translate(100vw, 100vh) rotate(225deg) scaleX(0.5);} 100% {transform: translate(0,0) rotate(225deg) scaleX(1);} }
+    @keyframes flow8 { 0% {transform: translate(-100vw, 100vh) rotate(315deg) scaleX(0.5);} 100% {transform: translate(0,0) rotate(315deg) scaleX(1);} }
 
     .road:nth-child(1) { animation: flow1 4s linear infinite; }
     .road:nth-child(2) { animation: flow2 4s linear infinite; }
